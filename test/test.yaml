@@ -1,0 +1,28 @@
+title: Episode One
+header: Episode One
+footer: More like this 
+
+# defaults
+images-width: 950
+images-height: 600
+
+leader:  
+  image: leader.png
+  next: 1
+
+slides:
+# id can be any non-empty string but must be unique in this document
+- id: 1
+  title: The Hitch Hikers Guide of the Galaxy
+# image must be in a browser compatible format
+  image: test1.png
+  sound: test1.mp3
+  next: 2
+
+- id: 2
+  title: Test 2
+  image: test2.png
+  sound: test2.mp3
+
+trailer:
+  image: trailer.png
