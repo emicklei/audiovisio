@@ -24,6 +24,7 @@ func main() {
 		Slides:       config.Slides,
 		FirstSlideID: config.Leader.NextID,
 	}
+	log.Printf("detected %d slides\n", len(page.Slides))
 
 	outputDir := filepath.Dir(*oConfig)
 	if len(config.JSInclude) == 0 {
@@ -49,7 +50,7 @@ func main() {
 		log.Println("skip writing", config.CSSInclude)
 	}
 
-	log.Println("processing template")
+	log.Println("processing HTML template")
 	//html, _ := ioutil.ReadFile("html.txt")
 	buf := new(bytes.Buffer)
 	thtml, _ := template.New("Zlidez").Parse(htmlTemplateSource())
@@ -67,4 +68,11 @@ func fileExists(filename string) bool {
 		return false
 	}
 	return !info.IsDir()
+}
+
+func check(err error) {
+	if err == nil {
+		return
+	}
+	log.Fatalln(err)
 }

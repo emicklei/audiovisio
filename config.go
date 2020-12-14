@@ -2,19 +2,20 @@ package main
 
 import (
 	"bytes"
+	"html/template"
 	"io/ioutil"
 
 	"gopkg.in/yaml.v2"
 )
 
 type Config struct {
-	Title         string `yaml:"title"`
-	CSSInclude    string `yaml:"css"`
-	JSInclude     string `yaml:"js"`
-	HeaderContent string `yaml:"header"`
-	FooterContent string `yaml:"footer"`
-	ImagesWidth   string `yaml:"images-width"`
-	ImagesHeight  string `yaml:"images-height"`
+	Title         string        `yaml:"title"`
+	CSSInclude    string        `yaml:"css"`
+	JSInclude     string        `yaml:"js"`
+	HeaderContent template.HTML `yaml:"header"`
+	FooterContent template.HTML `yaml:"footer"`
+	ImagesWidth   string        `yaml:"images-width"`
+	ImagesHeight  string        `yaml:"images-height"`
 
 	Leader  Slide   `yaml:"leader"`
 	Slides  []Slide `yaml:"slides"`
@@ -22,9 +23,11 @@ type Config struct {
 }
 
 func loadConfig() *Config {
-	data, _ := ioutil.ReadFile(*oConfig)
+	data, err := ioutil.ReadFile(*oConfig)
+	check(err)
 	dec := yaml.NewDecoder(bytes.NewReader(data))
 	config := new(Config)
-	_ = dec.Decode(config)
+	err = dec.Decode(config)
+	check(err)
 	return config
 }
