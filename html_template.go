@@ -2,6 +2,9 @@ package main
 
 func htmlTemplateSource() string {
 	return `<!DOCTYPE html>
+<!-- This file is GENERATED with the audiovisio tool
+     It will be overwritten each time you run the tool with your configuration.
+-->
 <html lang="en">
 <head>
     <meta charset="utf-8">
