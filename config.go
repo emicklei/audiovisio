@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"html/template"
 	"io/ioutil"
+	"time"
 
 	"gopkg.in/yaml.v2"
 )
@@ -16,6 +17,9 @@ type Config struct {
 	FooterContent template.HTML `yaml:"footer"`
 	ImagesWidth   string        `yaml:"images-width"`
 	ImagesHeight  string        `yaml:"images-height"`
+
+	PauseBeforeAudio time.Duration `yaml:"pause-before-audio"`
+	PauseAfterAudio  time.Duration `yaml:"pause-after-audio"`
 
 	Leader  Slide   `yaml:"leader"`
 	Slides  []Slide `yaml:"slides"`

@@ -21,17 +21,19 @@
 		var source = document.getElementById("audio_source");
 		source.src = slide.audio;
 		aud.load();
-	
-		var playPromise = aud.play();
-		// In browsers that don’t yet support this functionality,
-		// playPromise won’t be defined.
-		if (playPromise !== undefined) {
-			playPromise.then(function() {
-			}).catch(function(error) {
-			// Re-playback failed.
-			console.log("failed to re-play",error);
-			});
-		}  
+
+		sleep(1000).then(() => {		
+			var playPromise = aud.play();
+			// In browsers that don’t yet support this functionality,
+			// playPromise won’t be defined.
+			if (playPromise !== undefined) {
+				playPromise.then(function() {
+				}).catch(function(error) {
+				// Re-playback failed.
+				console.log("failed to re-play",error);
+				});
+			}  
+		});
 	}
 		
 	function play_next() {
@@ -59,3 +61,8 @@
 		// do not empty the src field
 		aud.hidden = true;
 	}
+
+	function sleep(ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+	  

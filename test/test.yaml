@@ -6,6 +6,10 @@ footer: More like this
 images-width: 950
 images-height: 600
 
+# transition
+pause-before-audio: 1s
+pause-after-audio: 1s
+
 leader:  
   image: leader.png
   next: 1
@@ -17,7 +21,7 @@ slides:
 # image must be in a browser compatible format
   image: test1.png
   sound: test1.mp3
-  next: 2
+  next: 2  
 
 - id: 2
   title: Test 2
