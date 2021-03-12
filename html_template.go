@@ -28,7 +28,7 @@ func htmlTemplateSource() string {
                 </ul>
             </nav>
             <section>
-                <img id="image_holder" src="leader.png" width="{{.Config.ImagesWidth}}px" height="{{.Config.ImagesHeight}}px" />
+                <img id="image_holder" src="{{.Config.Leader.Image}}" width="{{.Config.ImagesWidth}}px" height="{{.Config.ImagesHeight}}px" />
             </section>
         </div>
         <footer>
@@ -51,6 +51,12 @@ func htmlTemplateSource() string {
                 "pause_before": {{.PauseBeforeAudio}} ,
                 "pause_after": {{.PauseAfterAudio}} });
             {{ end -}}
+            slides.set('config.leader',{
+                "visio": "{{.Config.Leader.Image}}"
+            });
+            slides.set('config.trailer',{
+                "visio": "{{.Config.Trailer.Image}}"
+            });
             return slides;
         }
     </script>

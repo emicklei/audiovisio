@@ -60,8 +60,9 @@
 	}
 	
 	function end_presentation() {
+		let slide = slides().get('config.trailer')
 		let img = document.getElementById("image_holder");
-		img.src = "trailer.png";
+		img.src = slide.visio;
 	
 		let watch = document.getElementById("watch");
 		watch.hidden = false;
