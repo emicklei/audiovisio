@@ -9,13 +9,14 @@ import (
 )
 
 type Config struct {
-	Title         string        `yaml:"title"`
-	CSSInclude    string        `yaml:"css"`
-	JSInclude     string        `yaml:"js"`
-	HeaderContent template.HTML `yaml:"header"`
-	FooterContent template.HTML `yaml:"footer"`
-	ImagesWidth   string        `yaml:"images-width"`
-	ImagesHeight  string        `yaml:"images-height"`
+	Title            string        `yaml:"title"`
+	CSSInclude       string        `yaml:"css"`
+	JSInclude        string        `yaml:"js"`
+	HeaderContent    template.HTML `yaml:"header"`
+	FooterContent    template.HTML `yaml:"footer"`
+	ImagesWidth      string        `yaml:"images-width"`
+	ImagesHeight     string        `yaml:"images-height"`
+	ButtonStartTitle string        `yaml:"button-start-title"`
 
 	PauseBeforeAudio int `yaml:"pause-before-audio"`
 	PauseAfterAudio  int `yaml:"pause-after-audio"`
@@ -32,6 +33,9 @@ func (c *Config) postLoad() {
 		changed = append(changed, each.withPauses(c.PauseBeforeAudio, c.PauseAfterAudio))
 	}
 	c.Slides = changed
+	if len(c.ButtonStartTitle) == 0 {
+		c.ButtonStartTitle = "Start"
+	}
 }
 
 func loadConfig() *Config {

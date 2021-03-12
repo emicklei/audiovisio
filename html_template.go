@@ -20,7 +20,7 @@ func htmlTemplateSource() string {
         </header>
         <div class="wrapper clearfix">
             <nav>
-                <button id="watch" type="button" onclick="play('{{.FirstSlideID}}')">Start presentation</button>
+                <button id="watch" type="button" onclick="play('{{.FirstSlideID}}')">{{.ButtonStartTitle}}</button>
                 <ul>
                     {{ range .Slides -}}
                     <li><a id="start_{{ .ID }}" href="#" onclick="play('{{.ID}}')">{{ .Title -}}</a></li> 

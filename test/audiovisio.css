@@ -22,7 +22,6 @@
 	nav,
 	section {
 		float: left;
-		padding: 10px;
 		min-height: 170px;
 		box-sizing: border-box;
 	}
@@ -34,6 +33,7 @@
 	nav {
 		width: 20%;
 		background: #bcb4ac;
+		padding-left: 10px;
 	}
 	
 	nav ul {
@@ -59,4 +59,8 @@
 		text-align: center;
 		padding: 5px;
 		color: white;
+	}
+
+	button {
+		font-size: large;
 	}
