@@ -31,9 +31,10 @@ func main() {
 		config.JSInclude = "audiovisio.js"
 		js := filepath.Join(outputDir, config.JSInclude)
 		if !fileExists(js) {
+			log.Println("writing", js)
 			ioutil.WriteFile(js, []byte(javascriptSource()), os.ModePerm)
 		} else {
-			log.Println("skip overwriting", js)
+			log.Println("skip writing", js)
 		}
 	} else {
 		log.Println("skip writing", config.JSInclude)
@@ -42,9 +43,10 @@ func main() {
 		config.CSSInclude = "audiovisio.css"
 		css := filepath.Join(outputDir, config.CSSInclude)
 		if !fileExists(css) {
+			log.Println("writing", css)
 			ioutil.WriteFile(css, []byte(stylesheetSource()), os.ModePerm)
 		} else {
-			log.Println("skip overwriting", css)
+			log.Println("skip writing", css)
 		}
 	} else {
 		log.Println("skip writing", config.CSSInclude)

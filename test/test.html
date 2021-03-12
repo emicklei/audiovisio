@@ -36,8 +36,20 @@
     <script type="text/javascript">
         function slides() {
             let slides = new Map();
-            slides.set('1', { "title": "The Hitch Hikers Guide of the Galaxy", "audio": "test1.mp3", "visio": "test1.png" , "next": '2' });
-            slides.set('2', { "title": "Test 2", "audio": "test2.mp3", "visio": "test2.png" , "next": '' });
+            slides.set('1', { 
+                "title": "The Hitch Hikers Guide of the Galaxy", 
+                "audio": "test1.mp3", 
+                "visio": "test1.png" , 
+                "next": '2' ,
+                "pause_before":  500  ,
+                "pause_after":  500  });
+            slides.set('2', { 
+                "title": "Test 2", 
+                "audio": "test2.mp3", 
+                "visio": "test2.png" , 
+                "next": '' ,
+                "pause_before":  1000  ,
+                "pause_after":  500  });
             return slides;
         }
     </script>

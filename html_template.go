@@ -43,7 +43,13 @@ func htmlTemplateSource() string {
         function slides() {
             let slides = new Map();
             {{ range .Slides -}}
-            slides.set('{{.ID}}', { "title": "{{.Title}}", "audio": "{{.Sound}}", "visio": "{{.Image}}" , "next": '{{.NextID}}' });
+            slides.set('{{.ID}}', { 
+                "title": "{{.Title}}", 
+                "audio": "{{.Sound}}", 
+                "visio": "{{.Image}}" , 
+                "next": '{{.NextID}}' ,
+                "pause_before": {{.PauseBeforeAudio}} ,
+                "pause_after": {{.PauseAfterAudio}} });
             {{ end -}}
             return slides;
         }

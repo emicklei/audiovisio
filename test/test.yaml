@@ -6,9 +6,9 @@ footer: More like this
 images-width: 950
 images-height: 600
 
-# transition
-pause-before-audio: 1s
-pause-after-audio: 1s
+# transition in milliseconds
+pause-before-audio: 500
+pause-after-audio: 500
 
 leader:  
   image: leader.png
@@ -27,6 +27,8 @@ slides:
   title: Test 2
   image: test2.png
   sound: test2.mp3
+  # transition in milliseconds
+  pause-before-audio: 1000
 
 trailer:
   image: trailer.png

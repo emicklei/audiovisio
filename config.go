@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"html/template"
 	"io/ioutil"
-	"time"
 
 	"gopkg.in/yaml.v2"
 )
@@ -18,12 +17,21 @@ type Config struct {
 	ImagesWidth   string        `yaml:"images-width"`
 	ImagesHeight  string        `yaml:"images-height"`
 
-	PauseBeforeAudio time.Duration `yaml:"pause-before-audio"`
-	PauseAfterAudio  time.Duration `yaml:"pause-after-audio"`
+	PauseBeforeAudio int `yaml:"pause-before-audio"`
+	PauseAfterAudio  int `yaml:"pause-after-audio"`
 
 	Leader  Slide   `yaml:"leader"`
 	Slides  []Slide `yaml:"slides"`
 	Trailer Slide   `yaml:"trailer"`
+}
+
+func (c *Config) postLoad() {
+	// propagate the pauses
+	changed := []Slide{}
+	for _, each := range c.Slides {
+		changed = append(changed, each.withPauses(c.PauseBeforeAudio, c.PauseAfterAudio))
+	}
+	c.Slides = changed
 }
 
 func loadConfig() *Config {
@@ -33,5 +41,6 @@ func loadConfig() *Config {
 	config := new(Config)
 	err = dec.Decode(config)
 	check(err)
+	config.postLoad()
 	return config
 }

@@ -2,7 +2,6 @@ package main
 
 import (
 	"testing"
-	"time"
 )
 
 func Test_loadConfig(t *testing.T) {
@@ -15,7 +14,13 @@ func Test_loadConfig(t *testing.T) {
 	if got, want := cfg.Slides[0].ID, "1"; got != want {
 		t.Errorf("got [%v:%T] want [%v:%T]", got, got, want, want)
 	}
-	if got, want := cfg.PauseBeforeAudio, 1*time.Second; got != want {
+	if got, want := cfg.PauseBeforeAudio, 500; got != want {
+		t.Errorf("got [%v:%T] want [%v:%T]", got, got, want, want)
+	}
+	if got, want := cfg.Slides[0].PauseAfterAudio, 500; got != want {
+		t.Errorf("got [%v:%T] want [%v:%T]", got, got, want, want)
+	}
+	if got, want := cfg.Slides[1].PauseBeforeAudio, 1000; got != want {
 		t.Errorf("got [%v:%T] want [%v:%T]", got, got, want, want)
 	}
 }
