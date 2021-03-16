@@ -1,6 +1,16 @@
 <html>
     <head>
         <style>
+body {
+	font: 14px Arial, sans-serif;
+    color: white;
+	margin: 0px;
+}
+
+a {
+  color: lightgray;
+}
+
 .wrapper {
   display: flex;  
   flex-flow: row wrap;
@@ -14,24 +24,25 @@
 }
 
 .header {
-  background: tomato;
+  background: rgb(67, 64, 126);
 }
 
 .footer {
-  background: lightgreen;
+  background:  rgb(67, 64, 126);
 }
 
 .main {
   text-align: left;
-  background: deepskyblue;
+  background: rgb(33, 28, 123);
+  align-content: center
 }
 
 .aside-1 {
-  background: gold;
+  background:  rgb(95, 94, 116);
 }
 
 .aside-2 {
-  background: hotpink;
+  background: rgb(8, 5, 62);
 }
 
 @media all and (min-width: 600px) {
@@ -44,10 +55,6 @@
   .main    { order: 2; }
   .aside-2 { order: 3; }
   .footer  { order: 4; }
-}
-
-body {
-  padding: 2em; 
 }
             </style>        
     </head>
@@ -81,7 +88,7 @@ body {
 
                 
             </aside>
-            <aside class="aside aside-2">Aside 2</aside>
+            <aside class="aside aside-2"></aside>
             <footer class="footer">Footer</footer>
           </div>
     </body>
