@@ -10,58 +10,66 @@ func htmlTemplateSource() string {
     <meta charset="utf-8">
     <title>{{.Config.Title}}</title>
     <link rel="stylesheet" href="{{.Config.CSSInclude}}" />
-</head>
-<!-- http://css3.bradshawenterprises.com/cfimg/ -->
-<body>
-    <script type="text/javascript" src="{{.Config.JSInclude}}"></script>
-    <div class="container">
-        <header>
-            <h1>{{.Config.HeaderContent}}</h1>
-        </header>
-        <div class="wrapper clearfix">
-            <nav>
-                <button id="watch" type="button" onclick="play('{{.FirstSlideID}}')">{{.ButtonStartTitle}}</button>
-                <ul>
+</head> 
+   <body>
+        <script type="text/javascript" src="{{.Config.JSInclude}}"></script>
+        <div class="wrapper">
+
+            <header class="header">
+                {{.Config.HeaderContent}}
+            </header>
+
+            <article class="main">
+                <div class="box">
+                    <img id="image_holder" src="{{.Config.Leader.Image}}" />
+                </div>
+            </article>            
+            <aside class="aside aside-1">
+            
+                <ol>
                     {{ range .Slides -}}
                     <li><a id="start_{{ .ID }}" href="#" onclick="play('{{.ID}}')">{{ .Title -}}</a></li> 
                     {{ end -}}
-                </ul>
-            </nav>
-            <section>
-                <img id="image_holder" src="{{.Config.Leader.Image}}" width="{{.Config.ImagesWidth}}px" height="{{.Config.ImagesHeight}}px" />
-            </section>
+                </ol>                
+                
+            </aside>
+            <aside class="aside aside-2"></aside>
+            <footer class="footer">
+            
+                <p>{{.Config.FooterContent}}</p>
+
+                <button id="watch" type="button" onclick="play('{{.FirstSlideID}}')">{{.Config.ButtonStartTitle}}</button>
+
+                <audio controls id="audio_holder" onended="play_next()" hidden="true">
+                    <source id="audio_source" src="" type="audio/mpeg"> Your browser does not support the audio tag.
+                </audio>
+
+            </footer>
         </div>
-        <footer>
-            <p>{{.Config.FooterContent}}</p>
-            <audio controls id="audio_holder" onended="play_next()" hidden="true">
-                <source id="audio_source" src="" type="audio/mpeg"> Your browser does not support the audio tag.
-            </audio>            
-        </footer>
-    </div>
 
-    <script type="text/javascript">
-        function slides() {
-            let slides = new Map();
-            {{ range .Slides -}}
-            slides.set('{{.ID}}', { 
-                "title": "{{.Title}}", 
-                "audio": "{{.Sound}}", 
-                "visio": "{{.Image}}" , 
-                "next": '{{.NextID}}' ,
-                "pause_before": {{.PauseBeforeAudio}} ,
-                "pause_after": {{.PauseAfterAudio}} });
-            {{ end -}}
-            slides.set('config.leader',{
-                "visio": "{{.Config.Leader.Image}}"
-            });
-            slides.set('config.trailer',{
-                "visio": "{{.Config.Trailer.Image}}"
-            });
-            return slides;
-        }
-    </script>
+        <script type="text/javascript">
+          function slides() {
+              let slides = new Map();
+              {{ range .Slides -}}
+              slides.set('{{.ID}}', { 
+                  "title": "{{.Title}}", 
+                  "audio": "{{.Sound}}", 
+                  "visio": "{{.Image}}" , 
+                  "next": '{{.NextID}}' ,
+                  "pause_before": {{.PauseBeforeAudio}} ,
+                  "pause_after": {{.PauseAfterAudio}} });
+              {{ end -}}
+              slides.set('config.leader',{
+                  "visio": "{{.Config.Leader.Image}}"
+              });
+              slides.set('config.trailer',{
+                  "visio": "{{.Config.Trailer.Image}}"
+              });
+              return slides;
+          }
+        </script>
 
-</body>
+    </body>
 </html>
 `
 }

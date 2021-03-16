@@ -5,70 +5,68 @@
     <meta charset="utf-8">
     <title>Test - Episode One</title>
     <link rel="stylesheet" href="audiovisio.css" />
-</head>
+</head> 
+   <body>
+        <script type="text/javascript" src="audiovisio.js"></script>
+        <div class="wrapper">
 
-<body>
-    <script type="text/javascript" src="audiovisio.js"></script>
-    <div class="container">
-        <header>
-            <h1>Episode One</h1>
-        </header>
-        <div class="wrapper clearfix">
-            <nav>                
+            <header class="header">
+                Episode One
+            </header>
+
+            <article class="main">
+                <div class="box">
+                    <img id="image_holder" src="leader.png" />
+                </div>
+            </article>            
+            <aside class="aside aside-1">
+            
                 <ol>
                     <li><a id="start_1" href="#" onclick="play('1')">The Hitch Hikers Guide of the Galaxy</a></li> 
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
-                    <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li>
                     <li><a id="start_2" href="#" onclick="play('2')">Test 2</a></li> 
-                </ol>
-            </nav>
-            <section>
-                <img id="image_holder" src="leader.png" width="950px" height="600px" />
-            </section>
+                    </ol>                
+                
+            </aside>
+            <aside class="aside aside-2"></aside>
+            <footer class="footer">
+            
+                <p>More like this</p>
+
+                <button id="watch" type="button" onclick="play('1')">Start</button>
+
+                <audio controls id="audio_holder" onended="play_next()" hidden="true">
+                    <source id="audio_source" src="" type="audio/mpeg"> Your browser does not support the audio tag.
+                </audio>
+
+            </footer>
         </div>
-        <footer>
-            <p><button id="watch" type="button" onclick="play('1')">Start presentation</button></p>
-            <audio controls id="audio_holder" onended="play_next()" hidden="true">
-                <source id="audio_source" src="" type="audio/mpeg"> Your browser does not support the audio tag.
-            </audio>            
-        </footer>
-    </div>
 
-    <script type="text/javascript">
-        function slides() {
-            let slides = new Map();
-            slides.set('1', { 
-                "title": "The Hitch Hikers Guide of the Galaxy", 
-                "audio": "test1.mp3", 
-                "visio": "test1.png" , 
-                "next": '2' ,
-                "pause_before":  500  ,
-                "pause_after":  500  });
-            slides.set('2', { 
-                "title": "Test 2", 
-                "audio": "test2.mp3", 
-                "visio": "test2.png" , 
-                "next": '' ,
-                "pause_before":  1000  ,
-                "pause_after":  500  });
-            slides.set('config.leader',{
-                "visio": "leader.png"
-            });
-            slides.set('config.trailer',{
-                "visio": "trailer.png"
-            });
-            return slides;
-        }
-    </script>
+        <script type="text/javascript">
+          function slides() {
+              let slides = new Map();
+              slides.set('1', { 
+                  "title": "The Hitch Hikers Guide of the Galaxy", 
+                  "audio": "test1.mp3", 
+                  "visio": "test1.png" , 
+                  "next": '2' ,
+                  "pause_before":  500  ,
+                  "pause_after":  500  });
+              slides.set('2', { 
+                  "title": "Test 2", 
+                  "audio": "test2.mp3", 
+                  "visio": "test2.png" , 
+                  "next": '' ,
+                  "pause_before":  1000  ,
+                  "pause_after":  500  });
+              slides.set('config.leader',{
+                  "visio": "leader.png"
+              });
+              slides.set('config.trailer',{
+                  "visio": "trailer.png"
+              });
+              return slides;
+          }
+        </script>
 
-</body>
+    </body>
 </html>
