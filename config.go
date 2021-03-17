@@ -14,8 +14,6 @@ type Config struct {
 	JSInclude        string        `yaml:"js"`
 	HeaderContent    template.HTML `yaml:"header"`
 	FooterContent    template.HTML `yaml:"footer"`
-	ImagesWidth      string        `yaml:"images-width"`
-	ImagesHeight     string        `yaml:"images-height"`
 	ButtonStartTitle string        `yaml:"button-start-title"`
 
 	PauseBeforeAudio int `yaml:"pause-before-audio"`

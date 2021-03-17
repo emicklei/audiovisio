@@ -3,11 +3,8 @@ header: Episode One
 footer: More like this
 button-start-title: Start 
 
-# defaults
-images-width: 950
-images-height: 600
-
 # transition in milliseconds
+# can be overridden per slide
 pause-before-audio: 500
 pause-after-audio: 500
 
@@ -28,7 +25,7 @@ slides:
   title: Test 2
   image: test2.png
   sound: test2.mp3
-  # transition in milliseconds
+  # override transition in milliseconds
   pause-before-audio: 1000
 
 trailer:

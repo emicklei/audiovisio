@@ -2,13 +2,13 @@
 
 ## intro
 
-Audiovisio is a experimental tool to create HTML based presentations from full image slides for which each slide has its own audio file. 
+Audiovisio is a experimental tool to create HTML based presentations from full image slides for which each slide has its own audio file.
 Using a simple configuration file, you specify the title and order of each slide.
 The audiovisio tool will generate all the webpage resources such that you can host the standalone presentation.
 
 ## usage
 
-The example configuratiob below is taken from the test folder.
+The example configuration below is taken from the test folder.
 There are 2 slides, 4 images and 2 audio files.
 The audio files are created using Google Text to Speech (see [gspeech](https://github.com/emicklei/gspeech)).
 
@@ -17,13 +17,15 @@ The audio files are created using Google Text to Speech (see [gspeech](https://g
     audiovisio -c test.yaml -o test.html
 
 ```
-title: Episode One
+title: Test - Episode One
 header: Episode One
-footer: More like this 
+footer: More like this
+button-start-title: Start 
 
-# defaults
-images-width: 950
-images-height: 600
+# transition in milliseconds
+# can be overridden per slide
+pause-before-audio: 500
+pause-after-audio: 500
 
 leader:  
   image: leader.png
@@ -36,15 +38,17 @@ slides:
 # image must be in a browser compatible format
   image: test1.png
   sound: test1.mp3
-  next: 2
+  next: 2  
 
 - id: 2
   title: Test 2
   image: test2.png
   sound: test2.mp3
+  # override transition in milliseconds
+  pause-before-audio: 1000
 
 trailer:
-  image: trailer.png 
+  image: trailer.png
 ```
 
 ### Contributions
