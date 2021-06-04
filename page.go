@@ -1,4 +1,4 @@
-package main
+package audiovisio
 
 type Page struct {
 	Config       *Config

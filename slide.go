@@ -1,4 +1,4 @@
-package main
+package audiovisio
 
 type Slide struct {
 	ID    string `yaml:"id"`

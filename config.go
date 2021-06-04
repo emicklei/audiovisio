@@ -1,4 +1,4 @@
-package main
+package audiovisio
 
 import (
 	"bytes"
@@ -36,8 +36,8 @@ func (c *Config) postLoad() {
 	}
 }
 
-func loadConfig() *Config {
-	data, err := ioutil.ReadFile(*oConfig)
+func LoadConfig(cfg string) *Config {
+	data, err := ioutil.ReadFile(cfg)
 	check(err)
 	dec := yaml.NewDecoder(bytes.NewReader(data))
 	config := new(Config)

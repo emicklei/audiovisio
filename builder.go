@@ -1,8 +1,7 @@
-package main
+package audiovisio
 
 import (
 	"bytes"
-	"flag"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -10,15 +9,7 @@ import (
 	"path/filepath"
 )
 
-var (
-	oConfig = flag.String("c", "test.yaml", "configuration YAML file")
-	oOutput = flag.String("o", "page.html", "output HTML file")
-)
-
-func main() {
-	flag.Parse()
-	config := loadConfig()
-
+func BuildPresentation(config *Config, outputDir string) {
 	page := Page{
 		Config:       config,
 		Slides:       config.Slides,
@@ -26,7 +17,6 @@ func main() {
 	}
 	log.Printf("detected %d slides\n", len(page.Slides))
 
-	outputDir := filepath.Dir(*oConfig)
 	if len(config.JSInclude) == 0 {
 		config.JSInclude = "audiovisio.js"
 		js := filepath.Join(outputDir, config.JSInclude)
@@ -60,21 +50,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Println("writing", *oOutput)
-	ioutil.WriteFile(*oOutput, buf.Bytes(), os.ModePerm)
-}
-
-func fileExists(filename string) bool {
-	info, err := os.Stat(filename)
-	if os.IsNotExist(err) {
-		return false
-	}
-	return !info.IsDir()
-}
-
-func check(err error) {
-	if err == nil {
-		return
-	}
-	log.Fatalln(err)
+	log.Println("writing to", outputDir)
+	ioutil.WriteFile(outputDir, buf.Bytes(), os.ModePerm)
 }

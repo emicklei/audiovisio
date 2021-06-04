@@ -1,4 +1,4 @@
-package main
+package audiovisio
 
 func htmlTemplateSource() string {
 	return `<!DOCTYPE html>
